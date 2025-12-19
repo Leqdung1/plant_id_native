@@ -1,4 +1,35 @@
 package com.example.myapplication.navigation
 
-class NavGraph {
+import androidx.compose.runtime.Composable
+import androidx.navigation.NavGraph
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.myapplication.screen.home.HomeScreen
+import com.example.myapplication.screen.onboarding.OnboardingScreen
+
+@Composable
+fun NavGraph() {
+    val navController = rememberNavController()
+
+    NavHost(
+        navController = navController,
+        startDestination = NavRoute.ONBOARDING
+    ) {
+        composable(NavRoute.ONBOARDING) {
+            OnboardingScreen(
+                onFinish = {
+                    navController.navigate(NavRoute.HOME) {
+                        popUpTo(NavRoute.ONBOARDING) {
+                            inclusive = true
+                        }
+                    }
+                }
+            )
+        }
+
+        composable(NavRoute.HOME) {
+            HomeScreen()
+        }
+    }
 }

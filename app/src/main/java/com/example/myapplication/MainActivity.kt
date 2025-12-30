@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import com.example.myapplication.navigation.NavGraph
+import com.example.myapplication.screen.main.MainScreen
 import com.example.myapplication.screen.onboarding.OnboardingScreen
 import com.example.myapplication.ui.theme.MyApplicationTheme
 
@@ -15,7 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MyApplicationTheme {
-                NavGraph()
+                MainScreen()
             }
         }
     }

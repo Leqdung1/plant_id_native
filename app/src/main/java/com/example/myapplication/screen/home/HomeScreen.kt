@@ -29,7 +29,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(
+    onClose: () -> Unit
+) {
     val options = listOf(
         DataOption(1, "Don't know the plant name", "Want to identify the plant accurately."),
         DataOption(
@@ -59,7 +61,7 @@ fun HomeScreen() {
                 modifier = Modifier
                     .padding(8.dp)
                     .clickable {
-                        // TODO: go to other screen
+                        onClose()
                     }
             )
         }

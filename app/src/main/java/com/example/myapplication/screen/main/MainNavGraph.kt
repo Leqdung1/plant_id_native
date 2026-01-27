@@ -14,10 +14,13 @@ fun MainNavGraph(navController: NavHostController, modifier: Modifier) {
         startDestination = "HOME"
     ) {
         composable("HOME") {
-            HomeScreen()
+            HomeScreen(
+                onClose = {
+                    navController.navigate("PROFILE")
+                }
+            )
         }
         composable("PROFILE") {
-
         }
 
     }

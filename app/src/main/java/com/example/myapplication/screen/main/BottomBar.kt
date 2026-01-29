@@ -10,6 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
+import com.example.myapplication.navigation.NavRoute
 
 
 data class BottomData(
@@ -21,20 +22,20 @@ data class BottomData(
 @Composable
 fun BottomBar(navController: NavController) {
     val items = listOf(
-        BottomData("Home", Icons.Default.Home, "home"),
-        BottomData("Profile", Icons.Default.Person, "profile")
+        BottomData("Home", Icons.Default.Home, NavRoute.HOME),
+        BottomData("Profile", Icons.Default.Person, NavRoute.PROFILE)
     )
 
     NavigationBar {
         val currentRoute = navController.currentBackStackEntry?.destination?.route
-        items.forEach {
-            item -> NavigationBarItem(
+        items.forEach { item ->
+            NavigationBarItem(
                 selected = currentRoute == item.route,
                 onClick = {
-                       navController.navigate(item.route) {
-                           popUpTo("home")
-                           launchSingleTop = true
-                       }
+                    navController.navigate(item.route) {
+                        popUpTo(NavRoute.HOME)
+                        launchSingleTop = true
+                    }
                 },
                 icon = {
                     Icon(

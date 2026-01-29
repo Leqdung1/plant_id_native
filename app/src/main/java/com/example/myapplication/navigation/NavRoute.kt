@@ -4,4 +4,5 @@ object NavRoute {
     const val ONBOARDING = "onboarding"
     const val HOME = "home"
     const val PREMIUM = "premium"
+    const val PROFILE = "profile"
 }

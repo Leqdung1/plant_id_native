@@ -5,22 +5,30 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.myapplication.navigation.NavRoute
 import com.example.myapplication.screen.home.HomeScreen
+import com.example.myapplication.screen.profile.ProfileScreen
 
 @Composable
 fun MainNavGraph(navController: NavHostController, modifier: Modifier) {
     NavHost(
+        modifier = modifier,
         navController = navController,
-        startDestination = "HOME"
+        startDestination = NavRoute.HOME
     ) {
-        composable("HOME") {
+        composable(NavRoute.HOME) {
             HomeScreen(
                 onClose = {
-                    navController.navigate("PROFILE")
+                    navController.navigate(NavRoute.PROFILE)
                 }
             )
         }
-        composable("PROFILE") {
+        composable(NavRoute.PROFILE) {
+            ProfileScreen(
+                onBack = {
+                    navController.popBackStack()
+                }
+            )
         }
 
     }
